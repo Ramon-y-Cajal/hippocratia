@@ -4,13 +4,36 @@ import sklearn
 import numpy as np
 import pickle as pkl
 from sklearn.preprocessing import MinMaxScaler
-scal=MinMaxScaler()
+import chime
+import streamlit as st
+
+## Imports
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sb
+import sklearn as skl
+import time
+from IPython.display import display, clear_output
+#from ctgan import CTGANSynthesizer
+import sklearn
+from sklearn import pipeline      # Pipeline
+from sklearn import preprocessing # OrdinalEncoder, LabelEncoder
+from sklearn import model_selection # train_test_split
+from sklearn import metrics         # accuracy_score, balanced_accuracy_score, plot_confusion_matrix
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.neighbors import KNeighborsClassifier
+scal = MinMaxScaler()
+
 #Load the saved model
+
+
+
 model=pkl.load(open("final_model.p","rb"))
 
 
-st.set_page_config(page_title="Healthy Heart App",page_icon="⚕️",layout="centered",initial_sidebar_state="expanded")
-
+st.set_page_config(page_title="Heart App",page_icon="⚕️",layout="centered",initial_sidebar_state="expanded")
 
 
 def preprocess(age,sex,cp,trestbps,restecg,chol,fbs,thalach,exang,oldpeak,slope,ca,thal ):   
@@ -85,7 +108,7 @@ st.markdown(html_temp, unsafe_allow_html = True)
 st.subheader('by Ramon y Cajal Strive team ')
       
 # following lines create boxes in which user can enter data required to make prediction
-age=st.selectbox ("Age",range(1,121,1))
+age = st.selectbox ("Age",range(1,121,1))
 sex = st.radio("Select Gender: ", ('male', 'female'))
 cp = st.selectbox('Chest Pain Type',("Typical angina","Atypical angina","Non-anginal pain","Asymptomatic")) 
 trestbps=st.selectbox('Resting Blood Sugar',range(1,500,1))

@@ -1,3 +1,4 @@
+chime
 numpy
 pandas
 streamlit
