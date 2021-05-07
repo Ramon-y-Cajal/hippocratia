@@ -127,17 +127,19 @@ thal=st.selectbox('Thalium Stress Result',range(1,8,1))
 #user_input=preprocess(sex,cp,exang, fbs, slope, thal )
 pred=preprocess(age,sex,cp,trestbps,restecg,chol,fbs,thalach,exang,oldpeak,slope,ca,thal)
 
-
+audio_file = open('alarm.mp3', 'rb').read()
 
 
 if st.button("Predict"):    
   if pred[0] == 0:
     st.error('Warning! You have high risk of getting a heart attack!')
-    
+    chime.warning()
+    st.audio(audio_file, format='audio/mp3')
+
   else:
-    st.success('You have lower risk of getting a heart disease!')
-    
-   
+    st.success('You have lower risk of getting a heart attack!')
+    chime.success()
+    st.audio(audio_file, format='audio/mp3')
 
 
 
