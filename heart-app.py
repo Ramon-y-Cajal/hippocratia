@@ -5,31 +5,21 @@ import numpy as np
 import pickle as pkl
 from sklearn.preprocessing import MinMaxScaler
 import chime
-import streamlit as st
 
-## Imports
 import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sb
 import sklearn as skl
-import time
-from IPython.display import display, clear_output
-#from ctgan import CTGANSynthesizer
 import sklearn
-from sklearn import pipeline      # Pipeline
-from sklearn import preprocessing # OrdinalEncoder, LabelEncoder
-from sklearn import model_selection # train_test_split
-from sklearn import metrics         # accuracy_score, balanced_accuracy_score, plot_confusion_matrix
+from sklearn import pipeline      
+from sklearn import preprocessing 
+from sklearn import model_selection 
+from sklearn import metrics         
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.neighbors import KNeighborsClassifier
+
 scal = MinMaxScaler()
 
 #Load the saved model
-
-
-
 model=pkl.load(open("final_model.p","rb"))
 
 
@@ -38,7 +28,6 @@ st.set_page_config(page_title="Heart App",page_icon="⚕️",layout="centered",i
 
 def preprocess(age,sex,cp,trestbps,restecg,chol,fbs,thalach,exang,oldpeak,slope,ca,thal ):   
  
-    
     # Pre-processing user input   
     if sex=="male":
         sex=1 
@@ -140,7 +129,6 @@ if st.button("Predict"):
     st.success('You have lower risk of getting a heart attack!')
     chime.success()
     st.audio(audio_file, format='audio/mp3')
-
 
 
 st.sidebar.subheader("About App")
